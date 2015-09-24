@@ -24,13 +24,13 @@ makeCacheMatrix <- function(x = matrix()) {
     # initialize cache to NULL
     cache <- NULL
    
-    set <- function(y) {					# create matrix in working environment
+    set <- function(y) {				# create matrix in working environment
             x <<- y
             cache <<- NULL
     }   
     getMatrix <- function() x				# get the value of the matrix
 				
-    setMatrix <- function(inverted) 		# store inverted matrix in cache 
+    setMatrix <- function(inverted) 		  	# store inverted matrix in cache 
 			cache <<- inverted				  
     
     getInverse <- function() cache			# get the inverted matrix from cache
@@ -40,7 +40,6 @@ makeCacheMatrix <- function(x = matrix()) {
     list(set = set, getMatrix = getMatrix, setMatrix = setMatrix,      
          getInverse = getInverse)
 }
-
 
 ## cacheSolve computes the inverse of the matrix 
 ## created in makeCacheMatrix
@@ -57,9 +56,9 @@ cacheSolve <- function(x, ...) {
         return(cache)
     }
 		
-	print("Creating Inverted Matrix")
+    print("Creating Inverted Matrix")
     matrix <- x$getMatrix()					
-	cache <- solve(matrix, ...)				# invert the matrix		
-	x$setMatrix(cache)
-	return (cache)             
+    cache <- solve(matrix, ...)					# invert the matrix		
+    x$setMatrix(cache)
+    return (cache)             
 }
